@@ -1,0 +1,26 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+    <h3>Buscar por región: <small>{{ regionActiva | titlecase }}</small></h3>
+    <hr>
+    
+    <h5>Seleccione la región</h5>
+</div>
+
+<div class="row">
+    <div class="col">
+        <button *ngFor="let region of regiones" [class]="getClases( region )" (click)="activarRegion( region )">
+            {{ region | titlecase }}
+        </button>
+    </div>
+</div>
+
+<div *ngIf="paises.length === 0 && sinSeleccion === 0" class="alert alert-primary mt-5">
+    Debe seleccionar una región
+</div>
+<div *ngIf="paises.length === 0 && sinSeleccion === 1" class="spinner">
+    <img src="https://zarga701.com/assets/img/loading.gif" alt="Cargando" class="img-spinner">
+</div>
+<div class="row m-5">
+    <div class="col">
+        <app-pais-tabla [paises]="paises"></app-pais-tabla>
+    </div>
+</div>
